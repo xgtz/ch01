@@ -21,5 +21,14 @@
 			<result name="input">/fileUpDown/fileUp.jsp</result>
 			<result name="success">/fileUpDown/fileUpSuccess.jsp</result>
 		</action>
+		<action name="fileDownload" class="fileUpDown.FileDownload">
+			<param name="path">/download/fj.jpg</param>
+			<result name="success" type="stream">
+				<param name="contentType">image/jpg</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">inline;filename="hlm.jpg"</param>
+				<param name="buffersize">4096</param>
+			</result>
+		</action>
 	</package>
 </struts>    
