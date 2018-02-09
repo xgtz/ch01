@@ -3,10 +3,23 @@
 <struts>
 	<constant name="struts.custom.i18n.resources" value="globalMessages" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.multipart.maxSize" value="50000000"/>
 	<package name="I18N" extends="struts-default">
 		<action name="checkLogin" class="loginAction.LoginAction">
 			<result name="success">/I18N/loginSuccess.jsp</result>
 			<result name="error">/I18N/login.jsp</result>
+		</action>
+		<action name="upLoad" class="fileUpDown.upLoad">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">
+					image/gif,image/png,image/jpeg,image/jpg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<param name="savePath">./save</param>
+			<result name="input">/fileUpDown/fileUp.jsp</result>
+			<result name="success">/fileUpDown/fileUpSuccess.jsp</result>
 		</action>
 	</package>
 </struts>    
